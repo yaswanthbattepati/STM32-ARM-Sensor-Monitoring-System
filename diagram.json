@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "author": "Lyrical Life",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-st-nucleo-l031k6",
+      "id": "nucleo",
+      "top": -65.99,
+      "left": -6.05,
+      "attrs": {}
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -154.9, "left": 105.4, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -51.2,
+      "left": 255.2,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 217.4,
+      "left": 240,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-rgb-led", "id": "rgb1", "top": 13.6, "left": -238.9, "attrs": {} },
+    { "type": "wokwi-rgb-led", "id": "rgb2", "top": 157.6, "left": -238.9, "attrs": {} },
+    { "type": "wokwi-rgb-led", "id": "rgb3", "top": -72.8, "left": -229.3, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -5.65,
+      "left": -144,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 80.75,
+      "left": -153.6,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 224.75,
+      "left": -153.6,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "$serialMonitor:TX", "nucleo:VCP_RX", "", [] ],
+    [ "$serialMonitor:RX", "nucleo:VCP_TX", "", [] ],
+    [ "pot1:SIG", "nucleo:A0", "green", [ "v0" ] ],
+    [ "pot1:GND", "nucleo:GND.2", "black", [ "v67.2", "h-76.8" ] ],
+    [ "pot1:VCC", "nucleo:3V3", "red", [ "v0" ] ],
+    [ "lcd1:VCC", "nucleo:3V3", "red", [ "h-86.4", "v105.7" ] ],
+    [ "lcd1:GND", "nucleo:GND.1", "black", [ "h-57.6", "v-144", "h-230.4", "v163.2" ] ],
+    [ "nucleo:D4", "lcd1:SDA", "green", [ "h-28.8", "v134.4", "h211.2", "v-163.2" ] ],
+    [ "nucleo:D5", "lcd1:SCL", "magenta", [ "h-19.2", "v105.6", "h211.2", "v-134.4" ] ],
+    [ "nucleo:A1", "btn1:1.l", "cyan", [ "h0" ] ],
+    [ "nucleo:GND.1", "btn1:2.r", "black", [ "h-48", "v268.8", "h9.6" ] ],
+    [ "nucleo:D3", "r1:2", "blue", [ "h0" ] ],
+    [ "rgb3:G", "r1:1", "blue", [ "v0" ] ],
+    [ "rgb1:B", "r2:1", "violet", [ "v0" ] ],
+    [ "nucleo:D6", "r2:2", "violet", [ "h0" ] ],
+    [ "rgb2:R", "r3:1", "purple", [ "v28.8", "h67.2" ] ],
+    [ "nucleo:D12", "r3:2", "purple", [ "h0" ] ],
+    [ "rgb3:COM", "nucleo:GND.1", "black", [ "v9.2", "h-38.3", "v-96", "h201.6", "v105.6" ] ],
+    [ "rgb1:COM", "nucleo:GND.1", "black", [ "v9.2", "h-47.9", "v-182.4", "h220.8", "v105.6" ] ],
+    [ "rgb2:COM", "nucleo:GND.2", "black", [ "v38", "h326.5", "v-268.8" ] ]
+  ],
+  "dependencies": {}
+}
